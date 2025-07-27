@@ -77,9 +77,8 @@ async def update_game(game_id: int, **kwargs) -> Optional[Game]:
 
 
 async def delete_game(game_id: int) -> bool:
-    try:
-        game = await Game.get(id=game_id)
+    game = await Game.get_or_none(id=game_id)
+    if game:
         await game.delete()
         return True
-    except DoesNotExist:
-        return False
+    return False
