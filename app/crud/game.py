@@ -2,7 +2,6 @@ from typing import List, Optional
 from app.models.game import Game
 from app.models.user import User
 from app.models.text import Text
-from tortoise.exceptions import DoesNotExist
 
 
 async def create_game(

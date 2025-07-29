@@ -1,12 +1,22 @@
 from tortoise import fields
 from tortoise.models import Model
+from typing import Optional
 
 class Text(Model):
     id = fields.IntField(primary_key=True)
     body = fields.TextField()
     language = fields.CharField(max_length=10, default="en")
-    mode = fields.CharField(max_length=20)  # "time", "words", "quote"
-    length = fields.IntField(null=True)  # количество слов/секунд  
+    
+    # Режимы: time, words, quote, zen
+    mode = fields.CharField(max_length=20)  # "time", "words", "quote", "zen"
+    
+    # Дополнительные настройки
+    punctuation = fields.BooleanField(default=False)  # включены ли знаки препинания
+    numbers = fields.BooleanField(default=False)      # включены ли цифры
+    
+    # Длина (количество слов/секунд/итд)
+    length = fields.IntField(null=True)
+    
     created_at = fields.DatetimeField(auto_now_add=True)
     
     class Meta:
