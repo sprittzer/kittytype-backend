@@ -18,6 +18,9 @@ class Game(Model):
     errors = fields.IntField()
     duration = fields.IntField()
     timestamp = fields.DatetimeField(auto_now_add=True)
+    
+    
+    performance_data = fields.JSONField(null=True)  # [{"second": 1, "wpm": 45.5, "raw_wpm": 50.0, "errors": 2}, ...]
 
     class Meta:
         table = "games"

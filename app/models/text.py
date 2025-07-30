@@ -7,14 +7,11 @@ class Text(Model):
     body = fields.TextField()
     language = fields.CharField(max_length=10, default="en")
     
-    # Режимы: time, words, quote, zen
     mode = fields.CharField(max_length=20)  # "time", "words", "quote", "zen"
     
-    # Дополнительные настройки
     punctuation = fields.BooleanField(default=False)  # включены ли знаки препинания
     numbers = fields.BooleanField(default=False)      # включены ли цифры
     
-    # Длина (количество слов/секунд/итд)
     length = fields.IntField(null=True)
     
     created_at = fields.DatetimeField(auto_now_add=True)

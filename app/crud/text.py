@@ -1,6 +1,7 @@
 from typing import Optional
 from app.models.text import Text
 
+
 async def create_text(
     body: str,
     language: str = "en",
@@ -40,6 +41,7 @@ async def get_random_text_advanced(
         query = query.filter(length=length)
     
     return await query.order_by_rand().first()
+
 
 async def delete_text(text_id: int) -> bool:
     text = await Text.get_or_none(id=text_id)
